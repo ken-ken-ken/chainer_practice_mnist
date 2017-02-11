@@ -1,0 +1,1 @@
+Implementation of mnist to practice chainer
