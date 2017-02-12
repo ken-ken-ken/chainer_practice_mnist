@@ -36,16 +36,14 @@ class Trainer(object):
                 accuracies.append(accuracy.data)
             print('Accuracy: %.4f, Loss: %.4f'%(np.mean(np.array(accuracies)), np.mean(np.array(losses))))
 
-            test_loss = []
             test_accuracy = []
             print('Testing for Epoch: %d'%(epoch))
             for i in tqdm(range(0, len(x_test), self.batch_size)):
                 x = x_test[i : i + self.batch_size]
                 y = y_test[i : i + self.batch_size]
-                loss, acc = self.model(x, y, train=False)
-                test_loss.append(loss)
+                acc = self.model(x, y, train=False, test=True)
                 test_accuracy.append(acc)
-            print('Test Accuracy: %.4f, Loss: %.4f'%(np.mean(np.array(test_accuracy)), np.mean(np.array(test_accuracy))))
+            print('Test Accuracy: %.4f'%(np.mean(np.array(test_accuracy))))
             
 
     def prepare_data(self):

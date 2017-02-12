@@ -13,7 +13,7 @@ class Model(chainer.Chain):
             fc2 = L.Linear(1024, 10)
         )
 
-    def __call__(self, x, y, train=True):
+    def __call__(self, x, y, train=True, test=False):
         h = F.relu(self.conv1(x))
         h = F.max_pooling_2d(h, 2, stride=2)
         h = F.relu(self.conv2(h))
@@ -24,8 +24,12 @@ class Model(chainer.Chain):
 
         if train:
             self.loss = F.softmax_cross_entropy(h, y)
-            self.accuracy = F.accuracy(h,y)
+            self.accuracy = F.accuracy(h, y)
             return self.loss, self.accuracy
+
+        if test:
+            self.accuracy = F.accuracy(h, y)
+            return self.accuracy
 
         self.pred = F.softmax(h)
         return self.pred
