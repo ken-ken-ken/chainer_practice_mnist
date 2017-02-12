@@ -51,7 +51,7 @@ class Trainer(object):
     def prepare_data(self):
         mnist_data = fetch_mldata('MNIST original')
         x_whole = mnist_data.data
-        x_whole = x_whole.astype(np.float32)
+        x_whole = x_whole.astype(np.float32) / np.max(x_whole)
         x_whole = np.reshape(x_whole, (x_whole.shape[0], 1, int(np.sqrt(x_whole.shape[1])), int(np.sqrt(x_whole.shape[1]))))
         y_whole = mnist_data.target
         y_whole = y_whole.astype(np.int32)
