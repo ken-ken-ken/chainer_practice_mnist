@@ -42,7 +42,7 @@ class Trainer(object):
                 x = x_test[i : i + self.batch_size]
                 y = y_test[i : i + self.batch_size]
                 acc = self.model(x, y, train=False, test=True)
-                test_accuracy.append(acc)
+                test_accuracy.append(acc.data)
             print('Test Accuracy: %.4f'%(np.mean(np.array(test_accuracy))))
             
 
