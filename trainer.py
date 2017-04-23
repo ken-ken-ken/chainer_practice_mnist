@@ -83,7 +83,5 @@ if __name__ == '__main__':
     parser.add_argument('-g', '--gpu',
                         type=int, default=-1)
     args = parser.parse_args()
-    print(args.gpu)
-    aaaaa
     trainer = Trainer(args)
     trainer.train()
