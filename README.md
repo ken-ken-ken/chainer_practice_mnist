@@ -3,6 +3,9 @@ Implementation of mnist to practice chainer
 changing code to chainer format from tensorflow https://www.tensorflow.org/tutorials/mnist/pros/
 
 # How to Run
-just do ```python trainer.py```
-This model or trainer does not save the parameters
-If you wish to save them, please refer to chainer documentation.
+Just do ```python trainer.py```
+
+If you want to use gpu, do
+```python trainer.py --gpu {gpu id}```
+
+Model is saved every epoch in "./backup/model_latest.npz
